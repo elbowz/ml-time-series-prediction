@@ -1,0 +1,49 @@
+{
+  "data": {
+    "symbol": "function",
+    "filename": "sin.func.csv",
+    "index_col": "auto-increment",
+    "columns": [
+      "sin_func"
+    ],
+    "len_train_window": 50,
+    "train_test_split": 0.85,
+    "normalise": false
+  },
+  "training": {
+    "epochs": 2,
+    "batch_size": 32
+  },
+  "model": {
+    "loss": "mse",
+    "optimizer": "adam",
+    "save_filename": "cos_func",
+    "layers": [
+      {
+        "type": "lstm",
+        "neurons": 50,
+        "input_timesteps": 49,
+        "input_dim": 1,
+        "return_seq": true
+      },
+      {
+        "type": "dropout",
+        "rate": 0.05
+      },
+      {
+        "type": "lstm",
+        "neurons": 100,
+        "return_seq": false
+      },
+      {
+        "type": "dropout",
+        "rate": 0.05
+      },
+      {
+        "type": "dense",
+        "neurons": 1,
+        "activation": "linear"
+      }
+    ]
+  }
+}
